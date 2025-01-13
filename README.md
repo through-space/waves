@@ -1,11 +1,18 @@
-# React + TypeScript + Vite
+# \<Project Name>
 
 ## Description 
-This is a template project with my default minimal dependencies adjusted to just my needs.
+...
 
 
 ## Get Started
 
+### Installation
+
+```bash
+npm install
+````
+
+### Dev Mode
 ```bash
 npm run dev
 ````
