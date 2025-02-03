@@ -22,7 +22,7 @@
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "node"
   },
   "include": [
     "**/*.ts",
