@@ -1,6 +1,4 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { SimpleComponent } from "@components/atoms/SimpleComponent/SimpleComponent";
 
@@ -9,28 +7,8 @@ function App() {
 
 	return (
 		<>
-			<div>
-				<a href="https://vite.dev" target="_blank">
-					<img src={viteLogo} className="logo" alt="Vite logo" />
-				</a>
-				<a href="https://react.dev" target="_blank">
-					<img
-						src={reactLogo}
-						className="logo react"
-						alt="React logo"
-					/>
-				</a>
-			</div>
-			<h1>BlaBla Template</h1>
-			<>
-				<h2>I have</h2>
-				<ul>
-					<li>React (by Vite)</li>
-					<li>Typescript</li>
-					<li>eslint</li>
-					<li>prettier</li>
-				</ul>
-			</>
+			<div></div>
+			<h1>Waves</h1>
 			<div className="card">
 				<button onClick={() => setCount((count) => count + 1)}>
 					count is {count}
