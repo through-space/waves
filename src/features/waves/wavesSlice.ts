@@ -1,11 +1,11 @@
 import { createAppSlice } from "@app/createAppSlice";
+import { initialWavesState } from "./wavesConsts";
+import { TWavesSlice } from "./wavesInterfaces";
 import {
-	initialWavesState,
 	addWaveReducer,
 	removeWaveReducer,
 	updateWaveReducer,
-} from "./wavesConsts";
-import { TWavesSlice } from "./wavesInterfaces";
+} from "@features/waves/wavesReducers";
 
 export const wavesSlice: TWavesSlice = createAppSlice({
 	name: "waves",

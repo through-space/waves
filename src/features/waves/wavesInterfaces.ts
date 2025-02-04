@@ -5,6 +5,7 @@ import { RootState } from "@app/store";
 export interface IWave {
 	id: string;
 	frequency?: number;
+	dataPoints?: number[];
 }
 
 export interface IWavesList {
@@ -30,3 +31,8 @@ export type TWavesSlice = Slice<
 		) => void;
 	}
 >;
+
+export interface IGetWaveDataPointsProps {
+	wave: IWave;
+	periods: number;
+}
