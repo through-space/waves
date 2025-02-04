@@ -3,6 +3,12 @@
     "baseUrl": "./",
     "outDir": "./dist",
     "paths": {
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@features/*": [
+        "src/features/*"
+      ],
       "@components/*": [
         "src/components/*"
       ],

@@ -1,7 +1,9 @@
-# \<Project Name>
+# Waves
 
-## Description 
-...
+## Description
+
+Exploring waves
+___
 
 
 ## Get Started
@@ -16,7 +18,7 @@ npm install
 ```bash
 npm run dev
 ````
-
+___
 
 
 
