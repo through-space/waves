@@ -1,5 +1,6 @@
 import { PayloadAction, Slice } from "@reduxjs/toolkit";
 import { WritableDraft } from "immer";
+import { RootState } from "@app/store";
 
 export interface IWave {
 	id: string;
@@ -9,6 +10,8 @@ export interface IWave {
 export interface IWavesList {
 	items: IWave[];
 }
+
+export type TWavesState = RootState["waves"];
 
 export type TWavesSlice = Slice<
 	IWavesList,

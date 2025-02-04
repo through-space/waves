@@ -1,4 +1,5 @@
-import { IWavesList, TWavesSlice } from "./wavesInterfaces";
+import { IWave, IWavesList, TWavesSlice, TWavesState } from "./wavesInterfaces";
+import { RootState } from "@app/store";
 
 export const initialWavesState: IWavesList = {
 	items: [{ id: "0", frequency: 440 }],
@@ -42,4 +43,8 @@ export const updateWaveReducer: TWavesSlice["caseReducers"]["updateWave"] = (
 			item.id === updatedWave.id ? { ...item, ...updatedWave } : item,
 		),
 	};
+};
+
+export const selectAllWaves = (state: RootState): IWave[] => {
+	return state.waves.items;
 };

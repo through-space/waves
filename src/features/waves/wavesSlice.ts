@@ -1,7 +1,7 @@
-import { createAppSlice } from "../../app/createAppSlice";
+import { createAppSlice } from "@app/createAppSlice";
 import {
-	addWaveReducer,
 	initialWavesState,
+	addWaveReducer,
 	removeWaveReducer,
 	updateWaveReducer,
 } from "./wavesConsts";
@@ -16,5 +16,3 @@ export const wavesSlice: TWavesSlice = createAppSlice({
 		updateWave: updateWaveReducer,
 	},
 });
-
-// export default wavesSlice.reducer;
