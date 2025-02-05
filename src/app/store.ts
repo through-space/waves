@@ -1,5 +1,5 @@
 import { combineSlices, configureStore } from "@reduxjs/toolkit";
-import { wavesSlice } from "@features/waves/wavesSlice";
+import { wavesSlice } from "@features/waves/store/wavesSlice";
 
 const rootReducer = combineSlices(wavesSlice);
 

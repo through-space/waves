@@ -6,10 +6,21 @@ export interface IWave {
 	id: string;
 	frequency?: number;
 	dataPoints?: number[];
+	phase?: number;
+	amplitude?: number;
+	dataLength?: number;
+	periods?: number;
 }
 
 export interface IWavesList {
 	items: IWave[];
+}
+
+export interface IDataPointsProps {
+	time: number;
+	frequency: number;
+	amplitude: number;
+	phase: number;
 }
 
 export type TWavesState = RootState["waves"];
@@ -34,5 +45,8 @@ export type TWavesSlice = Slice<
 
 export interface IGetWaveDataPointsProps {
 	wave: IWave;
-	periods: number;
+	samplingDuration: number;
+	// periods?: number;
+	// dataLength?: number;
+	samplingRate?: number;
 }
