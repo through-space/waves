@@ -1,4 +1,4 @@
-import { TWavesSlice } from "@features/waves/wavesInterfaces";
+import { TWavesSlice } from "@features/waves/types/wavesInterfaces";
 
 export const addWaveReducer: TWavesSlice["caseReducers"]["addWave"] = (
 	state,

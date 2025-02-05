@@ -1,15 +1,19 @@
-import { IGetWaveDataPointsProps, IWavesList } from "./wavesInterfaces";
+import { IWave } from "./types/wavesInterfaces";
 
-export const initialWavesState: IWavesList = {
-	items: [
-		{ id: "0", frequency: 440 },
-		{ id: "1", frequency: 110 },
-	],
+export const DEFAULT_WAVE_PROPS: IWave = {
+	id: "",
+	frequency: 440,
+	amplitude: 1,
+	phase: 0,
+	periods: 2,
 };
 
-export const getCalculatedWaveDataPoints = (
-	props: IGetWaveDataPointsProps,
-): number[] => {
-	const { wave } = props;
-	return [];
-};
+// export const getWaveWithCalculatedData = (
+// 	props: IGetWaveDataPointsProps,
+// ): IWave => {
+// 	const { wave } = props;
+// 	return {
+// 		...wave,
+// 		dataPoints: getWaveDataPoints({ wave }),
+// 	};
+// };
