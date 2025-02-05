@@ -27,13 +27,13 @@
     },
     "jsx": "react-jsx",
     "esModuleInterop": true,
-    "module": "ESNext",
-    "moduleResolution": "node"
+    "module": "node16",
+    "moduleResolution": "bundler"
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "src"
+//    "src/**/*.ts",
+//    "src/**/*.tsx",
+    "src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"
   ]
 }
 
