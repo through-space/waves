@@ -2,23 +2,36 @@ import {
 	IDataPointsProps,
 	IGetWaveDataPointsProps,
 } from "@features/waves/types/wavesInterfaces";
-import { DEFAULT_WAVE_PROPS } from "@features/waves/wavesConsts";
 
 const getAngularFrequency = (frequency: number): number => {
 	return 2 * Math.PI * frequency;
 };
 
-const getPoint = (props: IDataPointsProps): number => {
+const getPointValue = (props: IDataPointsProps): number => {
 	const { time, frequency, amplitude, phase } = props;
-	return amplitude * Math.sin(time * frequency + phase);
+	const angularFrequency = getAngularFrequency(frequency);
+	return amplitude * Math.sin(time * angularFrequency + phase);
 };
 
-export const getWaveDataPoints = (props: IGetWaveDataPointsProps): number[] => {
-	const { wave, periods, dataLength } = props;
-	const { frequency, amplitude, phase } = { ...DEFAULT_WAVE_PROPS, ...wave };
+// export const getSamplingDuration = (props: {
+// 	frequency: number;
+// 	periods: number;
+// 	// sampleRate?: number;
+// 	dataLength?: number;
+// }): number => {
+// 	const { frequency, periods, dataLength } = props;
+//
+// 	const angularFrequency = getAngularFrequency(frequency);
+//
+// 	const radiansDisplayed = periods * 2 * Math.PI;
+// 	return radiansDisplayed / angularFrequency;
+// };
+//
+// export const get;
 
-	const angularFrequency = getAngularFrequency(frequency);
-	const radiansDisplayed = periods * 2 * Math.PI;
+export const getWaveDataPoints = (props: IGetWaveDataPointsProps): number[] => {
+	const { wave, samplingDuration, samplingRate } = props;
+	const { frequency, amplitude, phase } = wave;
 
 	/**
 	 * ::: AngularSpeed (rad/sec) * FullCircleTime (sec) = 2 Pi (rad)
@@ -27,15 +40,13 @@ export const getWaveDataPoints = (props: IGetWaveDataPointsProps): number[] => {
 	 *
 	 */
 
-	const totalSamplingDuration = radiansDisplayed / angularFrequency;
-	const stepTime = totalSamplingDuration / dataLength;
-
+	const stepTime = 1 / samplingRate;
 	const data: number[] = [];
 
-	for (let t = 0; t < totalSamplingDuration; t += stepTime) {
-		const point = getPoint({
+	for (let t = 0; t < samplingDuration; t += stepTime) {
+		const point = getPointValue({
 			time: t,
-			frequency: angularFrequency,
+			frequency,
 			phase,
 			amplitude,
 		});

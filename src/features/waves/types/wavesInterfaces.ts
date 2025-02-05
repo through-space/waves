@@ -45,6 +45,8 @@ export type TWavesSlice = Slice<
 
 export interface IGetWaveDataPointsProps {
 	wave: IWave;
-	periods: number;
-	dataLength: number;
+	samplingDuration: number;
+	// periods?: number;
+	// dataLength?: number;
+	samplingRate?: number;
 }
