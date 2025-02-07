@@ -1,4 +1,4 @@
-import { TWavesSlice } from "@features/waves/types/wavesInterfaces";
+import { TWavesSlice } from "@features/waves/store/wavesSliceInterfaces";
 
 export const addWaveReducer: TWavesSlice["caseReducers"]["addWave"] = (
 	state,
@@ -11,6 +11,7 @@ export const addWaveReducer: TWavesSlice["caseReducers"]["addWave"] = (
 
 	return { ...state, items: [...state.items, newWave] };
 };
+
 export const removeWaveReducer: TWavesSlice["caseReducers"]["removeWave"] = (
 	state,
 	action,
@@ -22,6 +23,7 @@ export const removeWaveReducer: TWavesSlice["caseReducers"]["removeWave"] = (
 		items: state.items.filter((item) => item.id === removeWave.id),
 	};
 };
+
 export const updateWaveReducer: TWavesSlice["caseReducers"]["updateWave"] = (
 	state,
 	action,
