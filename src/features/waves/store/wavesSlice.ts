@@ -1,18 +1,26 @@
 import { createAppSlice } from "@app/createAppSlice";
-import { TWavesSlice } from "../types/wavesInterfaces";
 import {
 	addWaveReducer,
 	removeWaveReducer,
+	updateWaveListSettingsReducer,
 	updateWaveReducer,
 } from "@features/waves/store/wavesReducers";
-import { initialWavesState } from "@features/waves/store/wavesSliceConsts";
+import {
+	getInitialWavesState,
+	INITIAL_WAVES_STATE,
+} from "@features/waves/store/wavesSliceConsts";
+import { TWavesSlice } from "@features/waves/store/wavesSliceInterfaces";
 
 export const wavesSlice: TWavesSlice = createAppSlice({
 	name: "waves",
-	initialState: initialWavesState,
+	initialState: getInitialWavesState(INITIAL_WAVES_STATE),
 	reducers: {
 		addWave: addWaveReducer,
 		removeWave: removeWaveReducer,
 		updateWave: updateWaveReducer,
+		updateWaveSettings: updateWaveListSettingsReducer,
 	},
 });
+
+export const { addWave, removeWave, updateWave, updateWaveSettings } =
+	wavesSlice.actions;

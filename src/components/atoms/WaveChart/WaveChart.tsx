@@ -10,6 +10,7 @@ export const WaveChart: FC<IWaveChartProps> = (props) => {
 	const chartOptions = {
 		series: [{ data }],
 		accessibility: { enabled: false },
+		credits: { enabled: false },
 		title: { text: "" },
 		yAxis: { title: { enabled: false } },
 	};
