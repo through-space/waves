@@ -1,4 +1,6 @@
 import { TWavesSlice } from "@features/waves/store/wavesSliceInterfaces";
+import { PayloadAction } from "@reduxjs/toolkit";
+import { IWaveListSettings } from "@features/waves/types/wavesInterfaces";
 
 export const addWaveReducer: TWavesSlice["caseReducers"]["addWave"] = (
 	state,
@@ -37,3 +39,11 @@ export const updateWaveReducer: TWavesSlice["caseReducers"]["updateWave"] = (
 		),
 	};
 };
+
+export const updateWaveListSettingsReducer: TWavesSlice["caseReducers"]["updateSettings"] =
+	(state, action: PayloadAction<IWaveListSettings>) => {
+		return {
+			...state,
+			settings: action.payload,
+		};
+	};

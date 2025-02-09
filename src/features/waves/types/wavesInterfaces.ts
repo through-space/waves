@@ -12,7 +12,7 @@ interface IWaveListSamplingSettings {
 	maxDataPoints: number;
 }
 
-interface IWaveListSettings {
+export interface IWaveListSettings {
 	sampling: IWaveListSamplingSettings;
 }
 
