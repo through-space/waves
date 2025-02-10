@@ -1,6 +1,13 @@
 import { getWaveSamples } from "@features/waves/utils/calculations/basic";
-import { IWavesList } from "@features/waves/types/wavesInterfaces";
-import { getSamplingPropsByTimeRange } from "@features/waves/utils/calculations/getDataPointMethods";
+import {
+	IWave,
+	IWaveListSettings,
+	IWavesList,
+} from "@features/waves/types/wavesInterfaces";
+import {
+	EGetSamplingPropsMethod,
+	getSamplingProps,
+} from "@features/waves/utils/calculations/getDataPointMethods";
 
 export const INITIAL_WAVES_STATE: IWavesList = {
 	items: [
@@ -9,36 +16,41 @@ export const INITIAL_WAVES_STATE: IWavesList = {
 	],
 	settings: {
 		sampling: {
-			sampleRate: 100,
+			sampleRate: 5000,
 			maxDataPoints: 100,
-			timeSpan: 100,
+			duration: 0.02,
 		},
 	},
 };
 
 // const
+export const getPopulatedWaves = (
+	waves: IWave[],
+	waveListSettings: IWaveListSettings,
+) => {
+	return waves.map((wave) => {
+		const { sampleRate, duration, maxDataPoints } =
+			waveListSettings.sampling;
+
+		const samplingProps = getSamplingProps(
+			EGetSamplingPropsMethod.BY_SAMPLING_RATE_AND_DURATION,
+			{ sampleRate, duration },
+		);
+		return {
+			...wave,
+			dataPoints: getWaveSamples(wave, samplingProps),
+		};
+	});
+};
 
 export const getInitialWavesState = (
 	initialWavesState: IWavesList,
 ): IWavesList => {
 	return {
 		...initialWavesState,
-		items: initialWavesState.items.map((wave) => {
-			// const samplingProps = getSamplingPropsByPeriod(wave, 1, 100);
-			// TODO: change the numbers to consts or get function?
-			// TODO: export them
-			const { sampleRate, timeSpan, maxDataPoints } =
-				initialWavesState.settings.sampling;
-
-			//TODO: maybe move to slice consts?
-			const samplingProps = getSamplingPropsByTimeRange(
-				maxDataPoints,
-				timeSpan,
-			);
-			return {
-				...wave,
-				dataPoints: getWaveSamples(wave, samplingProps),
-			};
-		}),
+		items: getPopulatedWaves(
+			initialWavesState.items,
+			initialWavesState.settings,
+		),
 	};
 };

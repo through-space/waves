@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IWaveBoxProps } from "@features/waves/components/WaveBox/WaveBoxInterfaces";
+import { IWaveBoxProps } from "@features/waves/components/molecules/WaveBox/WaveBoxInterfaces";
 import { WaveChart } from "@components/atoms/WaveChart/WaveChart";
 
 //TODO check why WaveChart receives undefined dataPoints

@@ -1,5 +1,5 @@
 export interface ISamplingProps {
-	samplingDuration: number;
-	samplingRate: number;
+	duration: number;
+	sampleRate: number;
 	// maxSamples?: number;
 }

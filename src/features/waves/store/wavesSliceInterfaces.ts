@@ -29,9 +29,12 @@ export type TWavesSlice = Slice<
 			state: WritableDraft<IWavesList>,
 			action: PayloadAction<IWave, "waves/updateWave">,
 		) => void;
-		updateWaveSettings: (
+		updateWaveListSettings: (
 			state: WritableDraft<IWavesList>,
-			action: PayloadAction<IWaveListSettings, "waves/updateSettings">,
+			action: PayloadAction<
+				IWaveListSettings,
+				"waves/updateWaveListSettings"
+			>,
 		) => void;
 	}
 >;

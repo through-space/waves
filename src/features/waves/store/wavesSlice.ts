@@ -18,9 +18,9 @@ export const wavesSlice: TWavesSlice = createAppSlice({
 		addWave: addWaveReducer,
 		removeWave: removeWaveReducer,
 		updateWave: updateWaveReducer,
-		updateWaveSettings: updateWaveListSettingsReducer,
+		updateWaveListSettings: updateWaveListSettingsReducer,
 	},
 });
 
-export const { addWave, removeWave, updateWave, updateWaveSettings } =
+export const { addWave, removeWave, updateWave, updateWaveListSettings } =
 	wavesSlice.actions;
