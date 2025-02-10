@@ -8,7 +8,7 @@ export interface IWave {
 
 interface IWaveListSamplingSettings {
 	sampleRate: number;
-	timeSpan: number;
+	duration: number;
 	maxDataPoints: number;
 }
 

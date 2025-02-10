@@ -33,13 +33,15 @@ export const getWaveSamples = (
 	wave: IWave,
 	props: ISamplingProps,
 ): number[] => {
-	const { samplingDuration, samplingRate } = props;
+	const { duration, sampleRate } = props;
 
-	const stepTime = 1 / samplingRate;
+	const stepTime = 1 / sampleRate;
+	// console.log(sampleRate);
 	const data: number[] = [];
 
-	for (let t = 0; t < samplingDuration; t += stepTime) {
+	for (let t = 0; t < duration; t += stepTime) {
 		const point = getWaveValue(wave, t);
+		// console.log(point);
 		data.push(point);
 	}
 
