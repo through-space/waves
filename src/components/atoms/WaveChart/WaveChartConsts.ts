@@ -1,0 +1,1 @@
+export const MAX_HIGHCHARTS_POINTS = 10000;

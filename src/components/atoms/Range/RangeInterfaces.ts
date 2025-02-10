@@ -5,4 +5,5 @@ export interface IRangeProps {
 	onChange?: (value: number) => void;
 	label?: string;
 	name?: string;
+	step?: number;
 }

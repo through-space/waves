@@ -3,17 +3,19 @@ import { IRangeProps } from "@components/atoms/Range/RangeInterfaces";
 import { DEFAULT_RANGE_PROPS } from "@components/atoms/Range/RangeConsts";
 
 export const Range: FC<IRangeProps> = (props) => {
-	const { min, max, value, onChange, name, label } = {
-		...props,
+	const { min, max, value, onChange, name, label, step } = {
 		...DEFAULT_RANGE_PROPS,
+		...props,
 	};
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+		// debugger;
 		onChange(Number(e.target.value));
 	};
 
 	return (
 		<>
+			<label htmlFor={name}>{label}</label>
 			<input
 				type="range"
 				name={name}
@@ -21,8 +23,8 @@ export const Range: FC<IRangeProps> = (props) => {
 				max={max}
 				value={value}
 				onChange={handleChange}
+				step={step}
 			/>
-			<label htmlFor={name}>{label}</label>
 		</>
 	);
 };
