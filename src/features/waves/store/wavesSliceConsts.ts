@@ -24,23 +24,28 @@ export const INITIAL_WAVES_STATE: IWavesList = {
 };
 
 // const
+
+export const getPopulatedWave = (
+	wave: IWave,
+	waveListSettings: IWaveListSettings,
+): IWave => {
+	const { sampleRate, duration, maxDataPoints } = waveListSettings.sampling;
+
+	const samplingProps = getSamplingProps(
+		EGetSamplingPropsMethod.BY_SAMPLING_RATE_AND_DURATION,
+		{ sampleRate, duration },
+	);
+	return {
+		...wave,
+		dataPoints: getWaveSamples(wave, samplingProps),
+	};
+};
+
 export const getPopulatedWaves = (
 	waves: IWave[],
 	waveListSettings: IWaveListSettings,
-) => {
-	return waves.map((wave) => {
-		const { sampleRate, duration, maxDataPoints } =
-			waveListSettings.sampling;
-
-		const samplingProps = getSamplingProps(
-			EGetSamplingPropsMethod.BY_SAMPLING_RATE_AND_DURATION,
-			{ sampleRate, duration },
-		);
-		return {
-			...wave,
-			dataPoints: getWaveSamples(wave, samplingProps),
-		};
-	});
+): IWave[] => {
+	return waves.map((wave) => getPopulatedWave(wave, waveListSettings));
 };
 
 export const getInitialWavesState = (

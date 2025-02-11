@@ -7,4 +7,5 @@ export interface IWavesListViewProps {
 	waves: IWave[];
 	settings: IWaveListSettings;
 	updateSettings: (settings: IWaveListSettings) => void;
+	updateWave: (wave: IWave) => void;
 }

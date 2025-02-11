@@ -1,14 +1,14 @@
 import { FC } from "react";
 import { IWaveBoxProps } from "@features/waves/components/molecules/WaveBox/WaveBoxInterfaces";
 import { WaveChart } from "@components/atoms/WaveChart/WaveChart";
-import { WaveSettings } from "@features/waves/components/molecules/WaveSettings/WaveSettings";
 
 //TODO check why WaveChart receives undefined dataPoints
 
-export const WaveBox: FC<IWaveBoxProps> = (props) => {
-	const { wave, updateWave } = props;
+export const WaveSumChart: FC<IWaveBoxProps> = (props) => {
+	const { wave } = props;
 	return (
 		<>
+			<>I am wave</>
 			<ul>
 				<li>
 					<span>id</span>
@@ -21,7 +21,6 @@ export const WaveBox: FC<IWaveBoxProps> = (props) => {
 				<li>
 					<WaveChart data={wave.dataPoints} />
 				</li>
-				<WaveSettings wave={wave} updateWave={updateWave} />
 			</ul>
 		</>
 	);

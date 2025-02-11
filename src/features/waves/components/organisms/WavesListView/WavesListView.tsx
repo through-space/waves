@@ -4,15 +4,16 @@ import { WaveBox } from "@features/waves/components/molecules/WaveBox/WaveBox";
 import { WaveListSettings } from "@features/waves/components/organisms/WaveListSettings/WaveListSettings";
 
 export const WavesListView: FC<IWavesListViewProps> = (props) => {
-	const { waves, settings, updateSettings } = props;
+	const { waves, settings, updateSettings, updateWave } = props;
 	return (
 		<>
 			<WaveListSettings
 				settings={settings}
 				updateSettings={updateSettings}
 			/>
+
 			{waves.map((wave) => (
-				<WaveBox key={wave.id} wave={wave} />
+				<WaveBox key={wave.id} wave={wave} updateWave={updateWave} />
 			))}
 		</>
 	);
