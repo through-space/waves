@@ -1,1 +1,1 @@
-export { getSamplingPropsByPeriod } from "@features/waves/utils/calculations/getDataPointMethods";
+export { getSamplingProps } from "@features/waves/utils/calculations/getDataPointMethods";
