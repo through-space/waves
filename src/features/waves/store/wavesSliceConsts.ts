@@ -17,6 +17,7 @@ export const DEFAULT_WAVE: IWave = {
 	frequency: 110,
 	enabled: true,
 	amplitude: 1,
+	phase: 0,
 };
 
 export const INITIAL_WAVES_STATE: IWavesList = {

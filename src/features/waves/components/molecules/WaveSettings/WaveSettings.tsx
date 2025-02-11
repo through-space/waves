@@ -13,6 +13,10 @@ export const WaveSettings: FC<IWaveSettingsProps> = (props) => {
 		updateWave({ ...wave, amplitude: amplitude });
 	};
 
+	const updatePhase = (phase: number) => {
+		updateWave({ ...wave, phase: phase });
+	};
+
 	// TODO add min max frequency
 	return (
 		<>
@@ -33,6 +37,15 @@ export const WaveSettings: FC<IWaveSettingsProps> = (props) => {
 				name={"amplitude"}
 				value={wave.amplitude}
 				onChange={updateAmplitude}
+			/>
+			<Range
+				min={-Math.PI}
+				max={Math.PI}
+				step={0.1}
+				label={"Phase"}
+				name={"phase"}
+				value={wave.phase}
+				onChange={updatePhase}
 			/>
 		</>
 	);
