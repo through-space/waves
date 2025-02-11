@@ -6,14 +6,6 @@ import { WaveListSettingsWrapper } from "@features/waves/components/organisms/Wa
 export const WaveListSettings: FC<IWaveListSettingsProps> = (props) => {
 	const { settings, updateSettings } = props;
 
-	// const updateSamplingSettings = (setting: string, value) => {}
-	// const handleSettingsUpdate = (
-	// 	settingName: string,
-	// 	settingValue: number,
-	// ) => {
-	// 	updateSettings({ ...settings, [settingName]: settingValue });
-	// };
-
 	// TODO: consider debouncing (write myself)
 	const updateSampleRate = (sampleRate: number): void => {
 		updateSettings({
@@ -23,7 +15,6 @@ export const WaveListSettings: FC<IWaveListSettingsProps> = (props) => {
 	};
 
 	const updateDuration = (duration: number): void => {
-		// console.log(`New Duration: ${duration}`);
 		updateSettings({
 			...settings,
 			sampling: { ...settings.sampling, duration: duration },

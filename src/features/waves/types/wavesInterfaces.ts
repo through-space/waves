@@ -4,6 +4,7 @@ export interface IWave {
 	dataPoints?: number[];
 	phase?: number;
 	amplitude?: number;
+	enabled?: boolean;
 }
 
 interface IWaveListSamplingSettings {
@@ -18,5 +19,6 @@ export interface IWaveListSettings {
 
 export interface IWavesList {
 	items: IWave[];
+	sumWave: Partial<IWave>;
 	settings: IWaveListSettings;
 }

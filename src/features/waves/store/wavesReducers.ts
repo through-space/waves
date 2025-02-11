@@ -1,8 +1,13 @@
 import { TWavesSlice } from "@features/waves/store/wavesSliceInterfaces";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { IWaveListSettings } from "@features/waves/types/wavesInterfaces";
-import { getPopulatedWaves } from "@features/waves/store/wavesSliceConsts";
+import {
+	getPopulatedSumWave,
+	getPopulatedWave,
+	getPopulatedWaves,
+} from "@features/waves/store/wavesSliceConsts";
 
+// TODO: add update sum wave
 export const addWaveReducer: TWavesSlice["caseReducers"]["addWave"] = (
 	state,
 	action,
@@ -15,6 +20,7 @@ export const addWaveReducer: TWavesSlice["caseReducers"]["addWave"] = (
 	return { ...state, items: [...state.items, newWave] };
 };
 
+// TODO: add update sum wave
 export const removeWaveReducer: TWavesSlice["caseReducers"]["removeWave"] = (
 	state,
 	action,
@@ -32,20 +38,37 @@ export const updateWaveReducer: TWavesSlice["caseReducers"]["updateWave"] = (
 	action,
 ) => {
 	const updatedWave = action.payload;
+	const items = state.items.map((item) => {
+		if (item.id !== updatedWave.id) {
+			return item;
+		}
+
+		return getPopulatedWave(
+			{
+				...item,
+				...updatedWave,
+			},
+			state.settings,
+		);
+	});
+	const sumWave = getPopulatedSumWave(items, state.settings);
 
 	return {
 		...state,
-		items: state.items.map((item) =>
-			item.id === updatedWave.id ? { ...item, ...updatedWave } : item,
-		),
+		items,
+		sumWave,
 	};
 };
 
 export const updateWaveListSettingsReducer: TWavesSlice["caseReducers"]["updateWaveListSettings"] =
 	(state, action: PayloadAction<IWaveListSettings>) => {
+		const updatedSettings = action.payload;
+		const items = getPopulatedWaves(state.items, updatedSettings);
+		const sumWave = getPopulatedSumWave(items, updatedSettings);
 		return {
 			...state,
-			settings: action.payload,
-			items: getPopulatedWaves(state.items, action.payload),
+			settings: updatedSettings,
+			items,
+			sumWave,
 		};
 	};
