@@ -8,9 +8,10 @@ import { MAX_HIGHCHARTS_POINTS } from "@components/atoms/WaveChart/WaveChartCons
 export const WaveChart: FC<IWaveChartProps> = (props) => {
 	const { data } = props;
 
-	// if (!data || !data.length) {
-	// 	return;
-	// }
+	// TODO: what if no data or undefined
+	if (!data || !data.length) {
+		return;
+	}
 
 	// console.log(data.length);
 
@@ -22,7 +23,7 @@ export const WaveChart: FC<IWaveChartProps> = (props) => {
 		credits: { enabled: false },
 		chart: { animation: false },
 		title: { text: "" },
-		yAxis: { title: { enabled: false } },
+		yAxis: { title: { enabled: false }, min: -1, max: 1 },
 	};
 
 	return (
