@@ -1,4 +1,7 @@
-import { getWaveSamples } from "@features/waves/utils/calculations/basic";
+import {
+	getSumWaveSamplesByFunction,
+	getWaveSamples,
+} from "@features/waves/utils/calculations/basic";
 import {
 	IWave,
 	IWaveListSettings,
@@ -9,10 +12,17 @@ import {
 	getSamplingProps,
 } from "@features/waves/utils/calculations/getDataPointMethods";
 
+export const DEFAULT_WAVE: IWave = {
+	id: "",
+	frequency: 110,
+	enabled: true,
+	amplitude: 1,
+};
+
 export const INITIAL_WAVES_STATE: IWavesList = {
 	items: [
-		{ id: "0", frequency: 440 },
-		{ id: "1", frequency: 110 },
+		{ ...DEFAULT_WAVE, id: "0", frequency: 440 },
+		{ ...DEFAULT_WAVE, id: "1", frequency: 110 },
 	],
 	settings: {
 		sampling: {
@@ -21,6 +31,7 @@ export const INITIAL_WAVES_STATE: IWavesList = {
 			duration: 0.02,
 		},
 	},
+	sumWave: {},
 };
 
 // const
@@ -48,14 +59,41 @@ export const getPopulatedWaves = (
 	return waves.map((wave) => getPopulatedWave(wave, waveListSettings));
 };
 
+export const getPopulatedSumWave = (
+	waves: IWave[],
+	waveListSettings: IWaveListSettings,
+): Partial<IWave> => {
+	const summedWaves = waves.filter((wave) => wave.enabled);
+
+	// TODO: repetition here
+	const { sampleRate, duration, maxDataPoints } = waveListSettings.sampling;
+
+	const samplingProps = getSamplingProps(
+		EGetSamplingPropsMethod.BY_SAMPLING_RATE_AND_DURATION,
+		{ sampleRate, duration },
+	);
+
+	return {
+		dataPoints: getSumWaveSamplesByFunction(summedWaves, samplingProps),
+	};
+};
+
 export const getInitialWavesState = (
 	initialWavesState: IWavesList,
 ): IWavesList => {
+	const populatedWaves = getPopulatedWaves(
+		initialWavesState.items,
+		initialWavesState.settings,
+	);
+
+	const sumWave = getPopulatedSumWave(
+		initialWavesState.items,
+		initialWavesState.settings,
+	);
+
 	return {
 		...initialWavesState,
-		items: getPopulatedWaves(
-			initialWavesState.items,
-			initialWavesState.settings,
-		),
+		items: populatedWaves,
+		sumWave,
 	};
 };

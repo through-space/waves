@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "@app/hooks";
 import { WavesListView } from "@features/waves/components/organisms/WavesListView/WavesListView";
 import {
 	selectAllWaves,
+	selectSumWave,
 	selectWavesListSettings,
 } from "@features/waves/store/wavesSelectors";
 import {
@@ -13,6 +14,7 @@ import {
 export const WaveList: FC = () => {
 	const waves = useAppSelector(selectAllWaves);
 	const settings = useAppSelector(selectWavesListSettings);
+	const sumWave = useAppSelector(selectSumWave);
 	const dispatch = useAppDispatch();
 
 	// console.log(settings);
@@ -26,6 +28,7 @@ export const WaveList: FC = () => {
 				dispatch(updateWaveListSettings(settings))
 			}
 			updateWave={(wave) => dispatch(updateWave(wave))}
+			sumWave={sumWave}
 		/>
 	);
 };

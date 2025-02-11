@@ -11,7 +11,9 @@ export const selectAllWaves = (state: RootState): IWave[] => {
 export const selectWavesListSettings = (
 	state: RootState,
 ): IWaveListSettings => {
-	// TODO Why there is no autocomplete here
 	return state.waves.settings;
-	// return state.waves.settings;
+};
+
+export const selectSumWave = (state: RootState): Partial<IWave> => {
+	return state.waves.sumWave;
 };

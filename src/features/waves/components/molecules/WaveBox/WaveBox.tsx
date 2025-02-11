@@ -9,20 +9,18 @@ export const WaveBox: FC<IWaveBoxProps> = (props) => {
 	const { wave, updateWave } = props;
 	return (
 		<>
-			<ul>
-				<li>
-					<span>id</span>
-					<span>{wave.id}</span>
-				</li>
-				<li>
-					<span>frequency</span>
-					<span>{wave.frequency}</span>
-				</li>
-				<li>
-					<WaveChart data={wave.dataPoints} />
-				</li>
-				<WaveSettings wave={wave} updateWave={updateWave} />
-			</ul>
+			<>
+				<span>id</span>
+				<span>{wave.id}</span>
+			</>
+			<>
+				<span>frequency</span>
+				<span>{wave.frequency}</span>
+			</>
+			<>
+				<WaveChart data={wave.dataPoints} />
+			</>
+			<WaveSettings wave={wave} updateWave={updateWave} />
 		</>
 	);
 };
