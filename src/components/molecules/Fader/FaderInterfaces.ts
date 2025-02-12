@@ -5,5 +5,5 @@ export interface IFaderProps {
 	max: number;
 	step: number;
 	displayValue?: boolean;
-	title?: string;
+	title?: React.ReactNode;
 }

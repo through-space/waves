@@ -9,7 +9,6 @@ export const Range: FC<IRangeProps> = (props) => {
 	};
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-		// debugger;
 		onChange(Number(e.target.value));
 	};
 
@@ -24,6 +23,7 @@ export const Range: FC<IRangeProps> = (props) => {
 				value={value}
 				onChange={handleChange}
 				step={step}
+				className="h-full"
 			/>
 		</>
 	);

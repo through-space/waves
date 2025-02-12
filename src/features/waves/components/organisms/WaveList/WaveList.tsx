@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useAppDispatch, useAppSelector } from "@app/hooks";
-import { WavesListView } from "@features/waves/components/organisms/WavesListView/WavesListView";
+import { WavesListView } from "@features/waves/components/layouts/WavesListView/WavesListView";
 import {
 	selectAllWaves,
 	selectSumWave,

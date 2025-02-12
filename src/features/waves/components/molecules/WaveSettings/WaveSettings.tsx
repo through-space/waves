@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { IWaveSettingsProps } from "@features/waves/components/molecules/WaveSettings/WaveSettingsInterfaces";
 import { Range } from "@components/atoms/Range/Range";
+import { WaveSettingsWrapper } from "@features/waves/components/molecules/WaveSettings/WaveSettingsStyledComponents";
+import { Fader } from "@components/molecules/Fader/Fader";
 
 export const WaveSettings: FC<IWaveSettingsProps> = (props) => {
 	const { wave, updateWave } = props;
@@ -19,34 +21,31 @@ export const WaveSettings: FC<IWaveSettingsProps> = (props) => {
 
 	// TODO add min max frequency
 	return (
-		<>
-			<Range
+		<WaveSettingsWrapper>
+			<Fader
 				min={0}
 				max={8000}
 				step={1}
-				label={"Frequency"}
-				name={"frequency"}
+				title={"Frequency"}
 				value={wave.frequency}
 				onChange={updateFrequency}
 			/>
-			<Range
+			<Fader
 				min={0}
 				max={1}
 				step={0.01}
-				label={"Amplitude"}
-				name={"amplitude"}
+				title={"Amplitude"}
 				value={wave.amplitude}
 				onChange={updateAmplitude}
 			/>
-			<Range
+			<Fader
 				min={-Math.PI}
 				max={Math.PI}
 				step={0.1}
-				label={"Phase"}
-				name={"phase"}
+				title={"Phase"}
 				value={wave.phase}
 				onChange={updatePhase}
 			/>
-		</>
+		</WaveSettingsWrapper>
 	);
 };

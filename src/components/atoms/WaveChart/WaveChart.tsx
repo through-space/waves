@@ -27,6 +27,8 @@ export const WaveChart: FC<IWaveChartProps> = (props) => {
 		],
 		accessibility: { enabled: false },
 		credits: { enabled: false },
+		// chart: { width: "100%", animation: false },
+		// chart: { animation: false },
 		chart: { animation: false },
 		legend: { enabled: false },
 		title: { text: "" },
@@ -35,7 +37,11 @@ export const WaveChart: FC<IWaveChartProps> = (props) => {
 
 	return (
 		<WaveChartWrapper>
-			<HighchartsReact highcharts={Highcharts} options={chartOptions} />
+			<HighchartsReact
+				containerProps={{ className: "h-full" }}
+				highcharts={Highcharts}
+				options={chartOptions}
+			/>
 		</WaveChartWrapper>
 	);
 };
