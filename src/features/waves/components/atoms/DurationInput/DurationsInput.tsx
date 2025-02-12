@@ -1,14 +1,14 @@
 import { IDurationsInputProps } from "@features/waves/components/atoms/DurationInput/DurationsInputInterfaces";
 import { FC } from "react";
 import { waveListConfig } from "@features/waves/config/consts";
-import { RangeRow } from "@components/molecules/RangeRow/RangeRow";
+import { RangeRowInput } from "@components/molecules/RangeRowInput/RangeRowInput";
 
 export const DurationsInput: FC<IDurationsInputProps> = (props) => {
 	const { duration, updateDuration } = props;
 	const { min, max, step } = waveListConfig.duration;
 
 	return (
-		<RangeRow
+		<RangeRowInput
 			value={duration}
 			onChange={updateDuration}
 			min={min}

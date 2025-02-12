@@ -1,14 +1,14 @@
 import { FC } from "react";
 import { ISampleRateInputProps } from "@features/waves/components/atoms/SampleRateInput/SampleRateInputInterfaces";
 import { waveListConfig } from "@features/waves/config/consts";
-import { RangeRow } from "@components/molecules/RangeRow/RangeRow";
+import { RangeRowInput } from "@components/molecules/RangeRowInput/RangeRowInput";
 
 export const SampleRateInput: FC<ISampleRateInputProps> = (props) => {
 	const { sampleRate, updateSampleRate } = props;
 	const { min, max, step } = waveListConfig.sampleRate;
 
 	return (
-		<RangeRow
+		<RangeRowInput
 			value={sampleRate}
 			onChange={updateSampleRate}
 			min={min}

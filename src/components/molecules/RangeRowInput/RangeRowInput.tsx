@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { IFaderProps } from "@components/molecules/Fader/FaderInterfaces";
 import { Range } from "@components/atoms/Range/Range";
 import { SettingNumberDisplay } from "@components/atoms/SettingNumberDisplay/SettingNumberDisplay";
 import { SettingTitle } from "@components/atoms/SettingTitle/SettingTitle";
-import { RangeRowWrapper } from "@components/molecules/RangeRow/FaderStyledComponents";
+import { RangeRowInputWrapper } from "@components/molecules/RangeRowInput/RangeRowInputStyledComponents";
+import { IRangeRowProps } from "@components/molecules/RangeRowInput/RangeRowInterfaces";
 
-export const RangeRow: FC<IFaderProps> = (props) => {
+export const RangeRowInput: FC<IRangeRowProps> = (props) => {
 	const {
 		value,
 		onChange,
@@ -16,7 +16,7 @@ export const RangeRow: FC<IFaderProps> = (props) => {
 		title,
 	} = props;
 	return (
-		<RangeRowWrapper>
+		<RangeRowInputWrapper>
 			{title && <SettingTitle>{title}</SettingTitle>}
 			<Range
 				value={value}
@@ -26,6 +26,6 @@ export const RangeRow: FC<IFaderProps> = (props) => {
 				step={step}
 			/>
 			{displayValue && <SettingNumberDisplay value={value} />}
-		</RangeRowWrapper>
+		</RangeRowInputWrapper>
 	);
 };
