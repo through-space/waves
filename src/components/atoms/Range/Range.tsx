@@ -15,7 +15,7 @@ export const Range: FC<IRangeProps> = (props) => {
 
 	return (
 		<>
-			<label htmlFor={name}>{label}</label>
+			{label && <label htmlFor={name}>{label}</label>}
 			<input
 				type="range"
 				name={name}

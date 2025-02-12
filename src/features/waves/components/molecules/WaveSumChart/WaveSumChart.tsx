@@ -10,10 +10,7 @@ export const WaveSumChart: FC<IWaveSumChartProps> = (props) => {
 	//TODO: deal with undefined datapoints
 	return (
 		<>
-			<>Sum</>
-			<>
-				<WaveChart data={wave.dataPoints} />
-			</>
+			<WaveChart data={wave.dataPoints} />
 		</>
 	);
 };

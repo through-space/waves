@@ -1,4 +1,5 @@
 import Highcharts from "highcharts";
+import DarcUnica from "highcharts/themes/dark-unica";
 import { HighchartsReact } from "highcharts-react-official";
 import { FC } from "react";
 import { IWaveChartProps } from "@components/atoms/WaveChart/WaveChartInterfaces";
@@ -7,23 +8,29 @@ import { MAX_HIGHCHARTS_POINTS } from "@components/atoms/WaveChart/WaveChartCons
 
 export const WaveChart: FC<IWaveChartProps> = (props) => {
 	const { data } = props;
+	const theme = DarcUnica;
 
 	// TODO: what if no data or undefined
 	if (!data || !data.length) {
 		return;
 	}
 
-	// console.log(data.length);
-
 	const maxDataLength = Math.min(data.length, MAX_HIGHCHARTS_POINTS);
 
-	const chartOptions = {
-		series: [{ data: data.slice(0, maxDataLength) }],
+	const chartOptions: Highcharts.Options = {
+		series: [
+			{
+				data: data.slice(0, maxDataLength),
+				type: "line",
+				label: { enabled: false },
+			},
+		],
 		accessibility: { enabled: false },
 		credits: { enabled: false },
 		chart: { animation: false },
+		legend: { enabled: false },
 		title: { text: "" },
-		yAxis: { title: { enabled: false }, min: -1, max: 1 },
+		yAxis: { title: { text: "" }, min: -1, max: 1 },
 	};
 
 	return (

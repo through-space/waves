@@ -1,7 +1,11 @@
 import { FC } from "react";
 import { IWaveListSettingsProps } from "@features/waves/components/organisms/WaveListSettings/WaveListSettingsInterfaces";
-import { Range } from "@components/atoms/Range/Range";
-import { WaveListSettingsWrapper } from "@features/waves/components/organisms/WaveListSettings/WaveListSettingsStyledComponents";
+import {
+	WaveListSettingsFadersWrapper,
+	WaveListSettingsWrapper,
+} from "@features/waves/components/organisms/WaveListSettings/WaveListSettingsStyledComponents";
+import { SampleRateInput } from "@features/waves/components/atoms/SampleRateInput/SampleRateInput";
+import { DurationsInput } from "@features/waves/components/atoms/DurationInput/DurationsInput";
 
 export const WaveListSettings: FC<IWaveListSettingsProps> = (props) => {
 	const { settings, updateSettings } = props;
@@ -27,26 +31,16 @@ export const WaveListSettings: FC<IWaveListSettingsProps> = (props) => {
 
 	return (
 		<WaveListSettingsWrapper>
-			<>Settings:</>
-			<>
-				<Range
-					min={10}
-					max={10000}
-					value={settings.sampling.sampleRate}
-					onChange={updateSampleRate}
-					label={"Sample Rate"}
+			<WaveListSettingsFadersWrapper>
+				<SampleRateInput
+					sampleRate={settings.sampling.sampleRate}
+					updateSampleRate={updateSampleRate}
 				/>
-				<div>{settings.sampling.sampleRate}</div>
-				<Range
-					min={0}
-					max={0.1}
-					value={settings.sampling.duration}
-					onChange={updateDuration}
-					label={"Duration"}
-					step={0.001}
+				<DurationsInput
+					duration={settings.sampling.duration}
+					updateDuration={updateDuration}
 				/>
-				<>{settings.sampling.duration}</>
-			</>
+			</WaveListSettingsFadersWrapper>
 		</WaveListSettingsWrapper>
 	);
 };
