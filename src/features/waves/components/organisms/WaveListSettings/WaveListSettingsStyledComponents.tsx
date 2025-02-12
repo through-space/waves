@@ -4,7 +4,7 @@ export const WaveListSettingsWrapper: FC<{ children: React.ReactNode }> = ({
 	children,
 }) => {
 	return (
-		<div className="w-full flex flex-row sticky top-0 self-start bg-stone-800 z-50 pt-4 pb-4">
+		<div className="w-full flex flex-1 flex-row sticky top-0 self-start bg-stone-800 z-50 pt-4 pb-4">
 			{children}
 		</div>
 	);

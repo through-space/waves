@@ -30,7 +30,7 @@ export const Fader: FC<IFaderProps> = (props) => {
 					step={step}
 				/>
 			</VerticalRangeInputWrapper>
-			{title && <SettingTitle>{title}</SettingTitle>}
+			{/*{title && <SettingTitle>{title}</SettingTitle>}*/}
 		</FaderWrapper>
 	);
 };

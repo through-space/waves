@@ -11,9 +11,9 @@ export const WaveChart: FC<IWaveChartProps> = (props) => {
 	const theme = DarcUnica;
 
 	// TODO: what if no data or undefined
-	if (!data || !data.length) {
-		return;
-	}
+	// if (!data || !data.length) {
+	// 	data = [];
+	// }
 
 	const maxDataLength = Math.min(data.length, MAX_HIGHCHARTS_POINTS);
 

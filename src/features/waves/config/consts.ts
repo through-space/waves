@@ -19,7 +19,7 @@ const waveConfig: IWaveConfig = {
 
 const waveListConfig: IWaveListConfig = {
 	sampleRate: { min: 1, max: 10000, step: 1 },
-	duration: { min: 0, max: 0.1, step: 0.001 },
+	duration: { min: 0.001, max: 0.1, step: 0.001 },
 };
 
 export const wavesConfig: IWavesConfig = {

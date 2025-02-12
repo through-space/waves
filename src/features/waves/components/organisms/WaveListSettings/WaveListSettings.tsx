@@ -5,7 +5,7 @@ import {
 	WaveListSettingsWrapper,
 } from "@features/waves/components/organisms/WaveListSettings/WaveListSettingsStyledComponents";
 import { SampleRateInput } from "@features/waves/components/atoms/SampleRateInput/SampleRateInput";
-import { DurationsInput } from "@features/waves/components/atoms/DurationInput/DurationsInput";
+import { DurationsInput } from "@features/waves/components/atoms";
 
 export const WaveListSettings: FC<IWaveListSettingsProps> = (props) => {
 	const { settings, updateSettings } = props;
