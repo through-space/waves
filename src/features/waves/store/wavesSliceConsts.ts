@@ -5,7 +5,7 @@ import {
 import {
 	IWave,
 	IWaveListSettings,
-	IWavesList,
+	IWavesState,
 } from "@features/waves/types/wavesInterfaces";
 import {
 	EGetSamplingPropsMethod,
@@ -20,7 +20,7 @@ export const DEFAULT_WAVE: IWave = {
 	phase: 0,
 };
 
-export const INITIAL_WAVES_STATE: IWavesList = {
+export const INITIAL_WAVES_STATE: IWavesState = {
 	items: [
 		{ ...DEFAULT_WAVE, id: "0", frequency: 440 },
 		{ ...DEFAULT_WAVE, id: "1", frequency: 110 },
@@ -35,7 +35,11 @@ export const INITIAL_WAVES_STATE: IWavesList = {
 	sumWave: {},
 };
 
-// const
+// TODO: Add global type waveID to be string
+
+export const isWaveExist = (waves: IWave[], waveId: string): boolean => {
+	return waves.some((wave) => wave.id === waveId);
+};
 
 export const getPopulatedWave = (
 	wave: IWave,
@@ -80,8 +84,8 @@ export const getPopulatedSumWave = (
 };
 
 export const getInitialWavesState = (
-	initialWavesState: IWavesList,
-): IWavesList => {
+	initialWavesState: IWavesState,
+): IWavesState => {
 	const populatedWaves = getPopulatedWaves(
 		initialWavesState.items,
 		initialWavesState.settings,

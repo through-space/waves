@@ -1,11 +1,17 @@
 import { TWavesSlice } from "@features/waves/store/wavesSliceInterfaces";
-import { PayloadAction } from "@reduxjs/toolkit";
-import { IWaveListSettings } from "@features/waves/types/wavesInterfaces";
+import { CaseReducer, PayloadAction } from "@reduxjs/toolkit";
+import {
+	IWave,
+	IWaveListSettings,
+	IWavesState,
+} from "@features/waves/types/wavesInterfaces";
 import {
 	getPopulatedSumWave,
 	getPopulatedWave,
 	getPopulatedWaves,
+	isWaveExist,
 } from "@features/waves/store/wavesSliceConsts";
+import { AppStore } from "@app/store";
 
 // TODO: add update sum wave
 // export const addWaveReducer: TWavesSlice["caseReducers"]["addWave"] = (
@@ -23,19 +29,25 @@ import {
 // 		items: [...state.items, getPopulatedWave(newWave, state.settings)],
 // 	};
 // };
+// AppStore["getState"]
+// interface addWaverReducer extends  {}
 
-export const addWaveReducer: TWavesSlice["caseReducers"]["addWave"] = (
+export const addWaveReducer: CaseReducer<IWavesState, PayloadAction<IWave>> = (
 	state,
 	action,
 ) => {
 	const newWave = action.payload;
-	if (state.items.some((item) => item.id === newWave.id)) {
+
+	if (isWaveExist(state.items, newWave.id)) {
 		return state;
 	}
 
+	const items = [...state.items, getPopulatedWave(newWave, state.settings)];
+
 	return {
 		...state,
-		items: [...state.items, getPopulatedWave(newWave, state.settings)],
+		items,
+		sumWave: getPopulatedSumWave(items, state.settings),
 	};
 };
 

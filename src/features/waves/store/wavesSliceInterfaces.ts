@@ -4,7 +4,7 @@ import { RootState } from "@app/store";
 import {
 	IWave,
 	IWaveListSettings,
-	IWavesList,
+	IWavesState,
 } from "@features/waves/types/wavesInterfaces";
 
 export type TWavesState = RootState["waves"];
@@ -14,7 +14,7 @@ export type TWavesState = RootState["waves"];
 // export type
 
 export type TWavesSlice = Slice<
-	IWavesList,
+	IWavesState,
 	{
 		addWave: (
 			state: TWavesState,
@@ -22,15 +22,15 @@ export type TWavesSlice = Slice<
 		) => void;
 		//TODO: to reduce memory consider passing only wave id here
 		removeWave: (
-			state: WritableDraft<IWavesList>,
+			state: WritableDraft<IWavesState>,
 			action: PayloadAction<IWave, "waves/removeWave">,
 		) => void;
 		updateWave: (
-			state: WritableDraft<IWavesList>,
+			state: WritableDraft<IWavesState>,
 			action: PayloadAction<IWave, "waves/updateWave">,
 		) => void;
 		updateWaveListSettings: (
-			state: WritableDraft<IWavesList>,
+			state: WritableDraft<IWavesState>,
 			action: PayloadAction<
 				IWaveListSettings,
 				"waves/updateWaveListSettings"

@@ -17,7 +17,7 @@ export interface IWaveListSettings {
 	sampling: IWaveListSamplingSettings;
 }
 
-export interface IWavesList {
+export interface IWavesState {
 	items: IWave[];
 	sumWave: Partial<IWave>;
 	settings: IWaveListSettings;
