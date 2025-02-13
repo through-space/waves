@@ -32,6 +32,11 @@ import { AppStore } from "@app/store";
 // AppStore["getState"]
 // interface addWaverReducer extends  {}
 
+/**
+ * TODO: performance: https://redux.js.org/tutorials/essentials/part-6-performance-normalization
+ * To faster get wave by id. Maybe array vs map vs record??
+ */
+
 export const addWaveReducer: CaseReducer<IWavesState, PayloadAction<IWave>> = (
 	state,
 	action,
