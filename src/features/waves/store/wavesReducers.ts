@@ -8,6 +8,22 @@ import {
 } from "@features/waves/store/wavesSliceConsts";
 
 // TODO: add update sum wave
+// export const addWaveReducer: TWavesSlice["caseReducers"]["addWave"] = (
+// export const addWaveReducer: TWavesSlice = (
+// 	state,
+// 	action,
+// ) => {
+// 	const newWave = action.payload;
+// 	if (state.items.some((item) => item.id === newWave.id)) {
+// 		return state;
+// 	}
+//
+// 	return {
+// 		...state,
+// 		items: [...state.items, getPopulatedWave(newWave, state.settings)],
+// 	};
+// };
+
 export const addWaveReducer: TWavesSlice["caseReducers"]["addWave"] = (
 	state,
 	action,
@@ -17,7 +33,10 @@ export const addWaveReducer: TWavesSlice["caseReducers"]["addWave"] = (
 		return state;
 	}
 
-	return { ...state, items: [...state.items, newWave] };
+	return {
+		...state,
+		items: [...state.items, getPopulatedWave(newWave, state.settings)],
+	};
 };
 
 // TODO: add update sum wave

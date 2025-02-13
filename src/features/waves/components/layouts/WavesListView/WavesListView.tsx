@@ -8,9 +8,11 @@ import {
 	WaveListViewWrapper,
 	WaveListWrapper,
 } from "@features/waves/components/layouts/WavesListView/WavesListViewStyledComponents";
+import { AddWaveButton } from "@features/waves/components/atoms";
 
 export const WavesListView: FC<IWavesListViewProps> = (props) => {
-	const { waves, settings, updateSettings, updateWave, sumWave } = props;
+	const { waves, settings, updateSettings, updateWave, sumWave, addWave } =
+		props;
 	return (
 		<WaveListViewWrapper>
 			<WaveListTopPanel>
@@ -29,6 +31,7 @@ export const WavesListView: FC<IWavesListViewProps> = (props) => {
 					/>
 				))}
 			</WaveListWrapper>
+			<AddWaveButton addWave={addWave} />
 		</WaveListViewWrapper>
 	);
 };

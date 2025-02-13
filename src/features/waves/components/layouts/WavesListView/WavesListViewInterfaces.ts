@@ -9,4 +9,5 @@ export interface IWavesListViewProps {
 	updateSettings: (settings: IWaveListSettings) => void;
 	updateWave: (wave: IWave) => void;
 	sumWave: Partial<IWave>;
+	addWave: () => void;
 }
