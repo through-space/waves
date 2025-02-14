@@ -1,13 +1,13 @@
 import { FC } from "react";
-import { IWaveListSettingsProps } from "@features/waves/components/organisms/WaveListSettings/WaveListSettingsInterfaces";
+import { IWavesSettingsProps } from "@features/waves/components/molecules/WavesSettings/WaveSettingsInterfaces";
 import {
-	WaveListSettingsFadersWrapper,
-	WaveListSettingsWrapper,
-} from "@features/waves/components/organisms/WaveListSettings/WaveListSettingsStyledComponents";
+	WavesSettingsFadersWrapper,
+	WavesSettingsWrapper,
+} from "@features/waves/components/molecules/WavesSettings/WavesSettingsStyledComponents";
 import { SampleRateInput } from "@features/waves/components/atoms/SampleRateInput/SampleRateInput";
 import { DurationsInput } from "@features/waves/components/atoms";
 
-export const WaveListSettings: FC<IWaveListSettingsProps> = (props) => {
+export const WaveSettings: FC<IWavesSettingsProps> = (props) => {
 	const { settings, updateSettings } = props;
 
 	// TODO: consider debouncing (write myself)
@@ -30,8 +30,8 @@ export const WaveListSettings: FC<IWaveListSettingsProps> = (props) => {
 	//TODO: export inputs to components/atoms
 
 	return (
-		<WaveListSettingsWrapper>
-			<WaveListSettingsFadersWrapper>
+		<WavesSettingsWrapper>
+			<WavesSettingsFadersWrapper>
 				<SampleRateInput
 					sampleRate={settings.sampling.sampleRate}
 					updateSampleRate={updateSampleRate}
@@ -40,7 +40,7 @@ export const WaveListSettings: FC<IWaveListSettingsProps> = (props) => {
 					duration={settings.sampling.duration}
 					updateDuration={updateDuration}
 				/>
-			</WaveListSettingsFadersWrapper>
-		</WaveListSettingsWrapper>
+			</WavesSettingsFadersWrapper>
+		</WavesSettingsWrapper>
 	);
 };

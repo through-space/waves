@@ -1,27 +1,27 @@
 import React, { FC } from "react";
-import { IWavesListViewProps } from "@features/waves/components/layouts/WavesListView/WavesListViewInterfaces";
+import { IWavesViewProps } from "@features/waves/components/layouts/WavesView/WavesViewInterfaces";
 import { WaveBox } from "@features/waves/components/molecules/WaveBox/WaveBox";
-import { WaveListSettings } from "@features/waves/components/organisms/WaveListSettings/WaveListSettings";
+import { WaveSettings } from "@features/waves/components/molecules/WavesSettings/WaveSettings";
 import { WaveSumChart } from "@features/waves/components/molecules/WaveSumChart/WaveSumChart";
 import {
-	WaveListTopPanel,
+	WaveTopPanel,
 	WaveListViewWrapper,
 	WaveListWrapper,
-} from "@features/waves/components/layouts/WavesListView/WavesListViewStyledComponents";
+} from "@features/waves/components/layouts/WavesView/WavesViewStyledComponents";
 import { AddWaveButton } from "@features/waves/components/atoms";
 
-export const WavesListView: FC<IWavesListViewProps> = (props) => {
+export const WavesView: FC<IWavesViewProps> = (props) => {
 	const { waves, settings, updateSettings, updateWave, sumWave, addWave } =
 		props;
 	return (
 		<WaveListViewWrapper>
-			<WaveListTopPanel>
+			<WaveTopPanel>
 				<WaveSumChart wave={sumWave} />
-				<WaveListSettings
+				<WaveSettings
 					settings={settings}
 					updateSettings={updateSettings}
 				/>
-			</WaveListTopPanel>
+			</WaveTopPanel>
 			<WaveListWrapper>
 				{waves.map((wave) => (
 					<WaveBox

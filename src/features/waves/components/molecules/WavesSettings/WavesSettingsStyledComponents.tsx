@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-export const WaveListSettingsWrapper: FC<{ children: React.ReactNode }> = ({
+export const WavesSettingsWrapper: FC<{ children: React.ReactNode }> = ({
 	children,
 }) => {
 	return (
@@ -10,7 +10,7 @@ export const WaveListSettingsWrapper: FC<{ children: React.ReactNode }> = ({
 	);
 };
 
-export const WaveListSettingsFadersWrapper: FC<{
+export const WavesSettingsFadersWrapper: FC<{
 	children: React.ReactNode;
 }> = ({ children }) => {
 	return (

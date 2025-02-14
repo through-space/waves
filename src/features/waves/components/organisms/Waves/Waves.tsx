@@ -1,6 +1,6 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { useAppDispatch, useAppSelector } from "@app/hooks";
-import { WavesListView } from "@features/waves/components/layouts/WavesListView/WavesListView";
+import { WavesView } from "@features/waves/components/layouts/WavesView/WavesView";
 import {
 	selectAllWaves,
 	selectSumWave,
@@ -12,8 +12,9 @@ import {
 	updateWaveListSettings,
 } from "@features/waves/store/wavesSlice";
 import { DEFAULT_WAVE } from "@features/waves/store/wavesSliceConsts";
+import { AudioModule } from "@features/waves/components/molecules";
 
-export const WaveList: FC = () => {
+export const Waves: FC = () => {
 	const waves = useAppSelector(selectAllWaves);
 	const settings = useAppSelector(selectWavesListSettings);
 	const sumWave = useAppSelector(selectSumWave);
@@ -24,19 +25,25 @@ export const WaveList: FC = () => {
 	// TODO: move addWave to consts file
 
 	return (
-		<WavesListView
-			waves={waves}
-			settings={settings}
-			updateSettings={(settings) =>
-				dispatch(updateWaveListSettings(settings))
-			}
-			updateWave={(wave) => dispatch(updateWave(wave))}
-			sumWave={sumWave}
-			addWave={() =>
-				dispatch(
-					addWave({ ...DEFAULT_WAVE, id: self.crypto.randomUUID() }),
-				)
-			}
-		/>
+		<>
+			<AudioModule waves={waves} />
+			<WavesView
+				waves={waves}
+				settings={settings}
+				updateSettings={(settings) =>
+					dispatch(updateWaveListSettings(settings))
+				}
+				updateWave={(wave) => dispatch(updateWave(wave))}
+				sumWave={sumWave}
+				addWave={() =>
+					dispatch(
+						addWave({
+							...DEFAULT_WAVE,
+							id: self.crypto.randomUUID(),
+						}),
+					)
+				}
+			/>
+		</>
 	);
 };

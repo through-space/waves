@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { SingleFeatureLayout } from "@components/layouts/MainLayout/SingleFeatureLayout";
-import { WaveList } from "@features/waves/components/organisms/WaveList/WaveList";
+import { Waves } from "@features/waves/components/organisms/Waves/Waves";
 
 export const HomePage: FC = () => {
 	return (
 		<SingleFeatureLayout>
-			<WaveList />
+			<Waves />
 		</SingleFeatureLayout>
 	);
 };

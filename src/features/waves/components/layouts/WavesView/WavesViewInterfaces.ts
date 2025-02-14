@@ -3,7 +3,7 @@ import {
 	IWaveListSettings,
 } from "@features/waves/types/wavesInterfaces";
 
-export interface IWavesListViewProps {
+export interface IWavesViewProps {
 	waves: IWave[];
 	settings: IWaveListSettings;
 	updateSettings: (settings: IWaveListSettings) => void;

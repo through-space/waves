@@ -6,7 +6,7 @@ export const WaveListViewWrapper: FC<{ children: React.ReactNode }> = ({
 	return <div className="flex flex-col gap-4">{children}</div>;
 };
 
-export const WaveListTopPanel: FC<{ children: React.ReactNode }> = ({
+export const WaveTopPanel: FC<{ children: React.ReactNode }> = ({
 	children,
 }) => {
 	return <div className="flex flex-row gap-4 h-[20vh]">{children}</div>;
