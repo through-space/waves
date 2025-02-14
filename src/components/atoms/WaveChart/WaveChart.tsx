@@ -36,12 +36,10 @@ export const WaveChart: FC<IWaveChartProps> = (props) => {
 	};
 
 	return (
-		<WaveChartWrapper>
-			<HighchartsReact
-				containerProps={{ className: "w-full h-full" }}
-				highcharts={Highcharts}
-				options={chartOptions}
-			/>
-		</WaveChartWrapper>
+		<HighchartsReact
+			containerProps={{ className: "w-full h-full" }}
+			highcharts={Highcharts}
+			options={chartOptions}
+		/>
 	);
 };

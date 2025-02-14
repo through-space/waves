@@ -7,7 +7,7 @@ import {
 import { SampleRateInput } from "@features/waves/components/atoms/SampleRateInput/SampleRateInput";
 import { DurationsInput } from "@features/waves/components/atoms";
 
-export const WaveSettings: FC<IWavesSettingsProps> = (props) => {
+export const WavesSettings: FC<IWavesSettingsProps> = (props) => {
 	const { settings, updateSettings } = props;
 
 	// TODO: consider debouncing (write myself)

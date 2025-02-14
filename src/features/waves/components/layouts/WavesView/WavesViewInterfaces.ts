@@ -10,4 +10,5 @@ export interface IWavesViewProps {
 	updateWave: (wave: IWave) => void;
 	sumWave: Partial<IWave>;
 	addWave: () => void;
+	removeWave: (wave: IWave) => void;
 }

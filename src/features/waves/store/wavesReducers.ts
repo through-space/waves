@@ -62,10 +62,12 @@ export const removeWaveReducer: TWavesSlice["caseReducers"]["removeWave"] = (
 	action,
 ) => {
 	const removeWave = action.payload;
+	const items = state.items.filter((item) => item.id !== removeWave.id);
 
 	return {
 		...state,
-		items: state.items.filter((item) => item.id === removeWave.id),
+		items,
+		sumWave: getPopulatedSumWave(items, state.settings),
 	};
 };
 

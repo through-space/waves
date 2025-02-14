@@ -7,7 +7,12 @@ export const AddWaveButton: FC<IAddWaveButtonProps> = (props) => {
 
 	return (
 		<AddWaveButtonWrapper>
-			<button onClick={() => addWave()}>+</button>
+			<button
+				className="flex items-center rounded-full border border-amber-100 text-amber-100 w-10 h-10 justify-center opacity-10 hover:opacity-100 cursor-pointer"
+				onClick={() => addWave()}
+			>
+				<span className="text-4xl leading-8 h-full">+</span>
+			</button>
 		</AddWaveButtonWrapper>
 	);
 };

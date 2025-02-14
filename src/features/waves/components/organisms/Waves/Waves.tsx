@@ -8,6 +8,7 @@ import {
 } from "@features/waves/store/wavesSelectors";
 import {
 	addWave,
+	removeWave,
 	updateWave,
 	updateWaveListSettings,
 } from "@features/waves/store/wavesSlice";
@@ -26,6 +27,11 @@ export const Waves: FC = () => {
 
 	return (
 		<>
+			<div
+				onKeyUp={() => {
+					console.log("KEYBOARD");
+				}}
+			></div>
 			<AudioModule waves={waves} />
 			<WavesView
 				waves={waves}
@@ -43,6 +49,7 @@ export const Waves: FC = () => {
 						}),
 					)
 				}
+				removeWave={(wave) => dispatch(removeWave(wave))}
 			/>
 		</>
 	);
