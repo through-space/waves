@@ -10,6 +10,7 @@ import {
 	WaveBoxWrapper,
 } from "@features/waves/components/molecules/WaveBox/WaveBoxStyledComponents";
 import { RemoveWaveButton } from "@features/waves/components/atoms/RemoveWaveButton";
+import { DelayedEnableWrapper } from "@components/atoms/DelayedEnableWrapper/DelayedEnableWrapper";
 
 //TODO check why WaveChart receives undefined dataPoints
 

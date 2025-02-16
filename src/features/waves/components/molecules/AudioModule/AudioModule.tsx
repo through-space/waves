@@ -1,7 +1,5 @@
 import { FC, useCallback, useEffect, useRef } from "react";
 import { IAudioModuleProps } from "@features/waves/components/molecules/AudioModule/AudioModuleInterfaces";
-import { Simulate } from "react-dom/test-utils";
-import mouseUp = Simulate.mouseUp;
 
 const debounce = (callback, delay) => {
 	let t;

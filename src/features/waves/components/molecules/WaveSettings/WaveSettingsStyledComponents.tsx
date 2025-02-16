@@ -4,7 +4,7 @@ export const WaveSettingsWrapper: FC<{ children: React.ReactNode }> = ({
 	children,
 }) => {
 	return (
-		<div className="flex flex-row gap-1 justify-evenly h-full">
+		<div className="flex flex-row justify-between h-full w-full gap-1">
 			{children}
 		</div>
 	);

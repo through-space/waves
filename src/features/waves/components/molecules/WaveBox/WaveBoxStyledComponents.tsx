@@ -21,15 +21,13 @@ export const WaveBoxContent: FC<{ children?: React.ReactNode }> = ({
 	);
 };
 
+// TODO: do a delayed remove button/wrapper wuth
 export const WaveBoxFloatingButtonsWrapper: FC<{
-	children: React.ReactNode;
+	children?: React.ReactNode;
 }> = ({ children }) => {
-	return (
-		<div className="absolute z-40 bottom-1 right-1 opacity-30 transition-opacity duration-0 hover:opacity-100 hover:transition-opacity hover:duration-600">
-			{children}
-		</div>
-	);
+	return <div className={"absolute z-40 bottom-1 right-1 "}>{children}</div>;
 };
+
 export const WaveBoxChartWrapper: FC<{ children: React.ReactNode }> = ({
 	children,
 }) => {
@@ -43,6 +41,6 @@ export const WaveBoxSettingsWrapper: FC<{ children: React.ReactNode }> = ({
 }) => {
 	return (
 		// <div className="flex flex-row justify-between border rounded border-fuchsia-800 h-[20vh] w-full p-4">
-		<div className="h-full grow">{children}</div>
+		<div className="h-full grow w-1/5">{children}</div>
 	);
 };
