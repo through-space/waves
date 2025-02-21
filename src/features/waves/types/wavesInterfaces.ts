@@ -7,18 +7,21 @@ export interface IWave {
 	enabled?: boolean;
 }
 
-interface IWaveListSamplingSettings {
+export type TWaveID = string;
+
+export interface IWaveListSamplingSettings {
 	sampleRate: number;
 	duration: number;
 	maxDataPoints: number;
 }
 
-export interface IWaveListSettings {
+export interface IWavesSettings {
 	sampling: IWaveListSamplingSettings;
 }
 
 export interface IWavesState {
-	items: IWave[];
-	sumWave: Partial<IWave>;
-	settings: IWaveListSettings;
+	ids: TWaveID[];
+	entities: Record<TWaveID, IWave>;
+	settings: IWavesSettings;
+	sumWave?: { dataPoints?: number[] };
 }

@@ -1,3 +1,5 @@
+import { TWaveID } from "@features/waves/types/wavesInterfaces";
+
 export interface IRemoveWaveButtonProps {
-	removeWave: () => void;
+	waveID: TWaveID;
 }

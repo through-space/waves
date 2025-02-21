@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IWaveBoxProps } from "@features/waves/components/molecules/WaveBox/WaveBoxInterfaces";
-import { WaveChart } from "@components/atoms/WaveChart/WaveChart";
+import { WaveChart } from "@features/waves/components/atoms/WaveChart/WaveChart";
 import { WaveSettings } from "@features/waves/components/molecules/WaveSettings/WaveSettings";
 import {
 	WaveBoxChartWrapper,
@@ -10,15 +10,13 @@ import {
 	WaveBoxWrapper,
 } from "@features/waves/components/molecules/WaveBox/WaveBoxStyledComponents";
 import { RemoveWaveButton } from "@features/waves/components/atoms/RemoveWaveButton";
-import { DelayedEnableWrapper } from "@components/atoms/DelayedEnableWrapper/DelayedEnableWrapper";
 
 //TODO check why WaveChart receives undefined dataPoints
 
 // TODO: add minimize, open buttons and another panel with closed view
 
 export const WaveBox: FC<IWaveBoxProps> = (props) => {
-	const { wave, updateWave, removeWave } = props;
-
+	const { waveID } = props;
 	// TODO: move RemoveButton to some floating panel?
 	// TODO: Affirm Remove
 	// TODO: disable remove button with delay
@@ -26,14 +24,14 @@ export const WaveBox: FC<IWaveBoxProps> = (props) => {
 	return (
 		<WaveBoxWrapper>
 			<WaveBoxFloatingButtonsWrapper>
-				<RemoveWaveButton removeWave={() => removeWave(wave)} />
+				<RemoveWaveButton waveID={waveID} />
 			</WaveBoxFloatingButtonsWrapper>
 			<WaveBoxContent>
 				<WaveBoxChartWrapper>
-					<WaveChart data={wave.dataPoints} />
+					<WaveChart waveID={waveID} />
 				</WaveBoxChartWrapper>
 				<WaveBoxSettingsWrapper>
-					<WaveSettings wave={wave} updateWave={updateWave} />
+					<WaveSettings waveID={waveID} />
 				</WaveBoxSettingsWrapper>
 			</WaveBoxContent>
 		</WaveBoxWrapper>

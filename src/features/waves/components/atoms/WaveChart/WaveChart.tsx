@@ -2,26 +2,35 @@ import Highcharts from "highcharts";
 import DarcUnica from "highcharts/themes/dark-unica";
 import { HighchartsReact } from "highcharts-react-official";
 import { FC } from "react";
-import { IWaveChartProps } from "@components/atoms/WaveChart/WaveChartInterfaces";
-import { WaveChartWrapper } from "@components/atoms/WaveChart/WaveChartStyledComponents";
-import { MAX_HIGHCHARTS_POINTS } from "@components/atoms/WaveChart/WaveChartConsts";
+import { IWaveChartProps } from "@features/waves/components/atoms/WaveChart/WaveChartInterfaces";
+import {
+	MAX_HIGHCHARTS_POINTS,
+	selectWaveDataPoints,
+} from "@features/waves/components/atoms/WaveChart/WaveChartConsts";
+import { useAppSelector } from "@app/hooks";
+import { selectDataPointsById } from "@features/waves/store/slices/dataPointsSlice/dataPointsSliceSelectors";
 
 export const WaveChart: FC<IWaveChartProps> = (props) => {
-	const { data } = props;
+	const { waveID } = props;
 	const theme = DarcUnica;
+	// console.log(data);
 
-	// TODO: what if no data or undefined
-	if (!data || !data.length) {
+	const data = useAppSelector(selectWaveDataPoints(waveID));
+
+	if (!data) {
 		return;
 		// TODO: show dummy chart?
 	}
 
-	const maxDataLength = Math.min(data.length, MAX_HIGHCHARTS_POINTS);
+	const { dataPoints } = data;
+	// TODO: what if no data or undefined
+
+	const maxDataLength = Math.min(dataPoints.length, MAX_HIGHCHARTS_POINTS);
 
 	const chartOptions: Highcharts.Options = {
 		series: [
 			{
-				data: data.slice(0, maxDataLength),
+				data: dataPoints.slice(0, maxDataLength),
 				type: "line",
 				label: { enabled: false },
 			},

@@ -80,7 +80,11 @@ export const AudioModule: FC<IAudioModuleProps> = (props) => {
 
 	return (
 		<>
-			<button onMouseDown={handleMouseDown} onMouseUp={handleMouseUp}>
+			<button
+			// onKeyUp={(e) => {
+			// 	console.log(e);
+			// }}
+			>
 				PLAY
 			</button>
 		</>
