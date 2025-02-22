@@ -1,6 +1,9 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { IWave, IWavesState } from "@features/waves/types/wavesInterfaces";
-import { wavesAdapter } from "@features/waves/store/slices/wavesSlice/wavesSliceConsts";
+import {
+	getRandomWaveID,
+	wavesAdapter,
+} from "@features/waves/store/slices/wavesSlice/wavesSliceConsts";
 
 // TODO: add update sum wave
 export const removeWaveReducer = (state, action) => {
@@ -11,7 +14,7 @@ export const removeWaveReducer = (state, action) => {
 // export const updateWaveReducer: TWavesSlice["caseReducers"]["updateWave"] = (
 export const updateWaveReducer = (
 	state: IWavesState,
-	action: PayloadAction<Partial<IWave>, string>,
+	action: PayloadAction<IWave, string>,
 ) => {
 	const wave = action.payload;
 
@@ -27,7 +30,9 @@ export const updateWaveReducer = (
 	// 	// TODO: add error
 };
 
-export const addWaveReducer = (state, action) => {
-	const newWave = action.payload;
-	wavesAdapter.addOne(state, { ...newWave });
+export const addWaveReducer = (
+	state: IWavesState,
+	action: PayloadAction<IWave, string>,
+) => {
+	wavesAdapter.addOne(state, action.payload);
 };

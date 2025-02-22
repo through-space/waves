@@ -14,8 +14,7 @@ import {
 } from "@features/waves/utils/calculations/getDataPointMethods";
 import { createEntityAdapter } from "@reduxjs/toolkit";
 
-export const DEFAULT_WAVE: IWave = {
-	id: "",
+export const DEFAULT_WAVE: Partial<IWave> = {
 	frequency: 110,
 	enabled: true,
 	amplitude: 1,
@@ -55,6 +54,10 @@ export const wavesAdapter = createEntityAdapter<IWave>();
 // };
 
 // TODO: Add global type waveID to be string
+
+export const getRandomWaveID: () => string = () => {
+	return self.crypto.randomUUID();
+};
 
 export const isWaveExist = (waves: IWave[], waveId: string): boolean => {
 	return waves.some((wave) => wave.id === waveId);

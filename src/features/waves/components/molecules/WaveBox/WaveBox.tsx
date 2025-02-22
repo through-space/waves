@@ -21,6 +21,7 @@ export const WaveBox: FC<IWaveBoxProps> = (props) => {
 	// TODO: Affirm Remove
 	// TODO: disable remove button with delay
 
+	// console.log(waveID);
 	return (
 		<WaveBoxWrapper>
 			<WaveBoxFloatingButtonsWrapper>

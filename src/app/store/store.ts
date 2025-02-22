@@ -19,6 +19,7 @@ export const store = configureStore({
 		return getDefaultMiddleware().prepend(listenerMiddleware.middleware);
 	},
 });
+
 export type AppStore = typeof store;
 export type AppDispatch = AppStore["dispatch"];
 export const createTypedDraftSafeSelector =
