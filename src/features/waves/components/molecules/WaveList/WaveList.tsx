@@ -4,7 +4,6 @@ import { selectAllWaveIds } from "@features/waves/store/slices/wavesSlice/wavesS
 import { WaveBox } from "@features/waves/components/molecules/WaveBox/WaveBox";
 
 export const WaveList: FC = () => {
-	// const {} = props;
 	const waveIDs = useAppSelector(selectAllWaveIds);
 
 	return (

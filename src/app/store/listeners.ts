@@ -29,13 +29,3 @@ startAppListening({
 		);
 	},
 });
-
-startAppListening({
-	predicate: (action, currentState, previousState) => {
-		console.log("predicate", currentState, previousState);
-		return false;
-	},
-	effect: () => {
-		console.log("init listener");
-	},
-});

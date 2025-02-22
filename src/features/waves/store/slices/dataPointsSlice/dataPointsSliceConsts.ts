@@ -17,6 +17,10 @@ export const dataPointsAdapter = createEntityAdapter({
 export const getInitialDataPoints = () => {
 	const wavesSliceState = wavesSlice.getInitialState();
 	const samplingSettings = wavesSliceState.settings.sampling;
+
+	//TODO: check when no waves exist
+	console.log("getInitialDataPoints()");
+
 	const initialDataPoints = Object.values(wavesSliceState.entities).map(
 		(wave) => {
 			return {

@@ -1,5 +1,6 @@
 import { createAppSlice } from "@app/createAppSlice";
 import {
+	addWaveReducer,
 	removeWaveReducer,
 	updateWaveReducer,
 } from "@features/waves/store/slices/wavesSlice/wavesSliceReducers";
@@ -18,7 +19,8 @@ export const wavesSlice = createAppSlice({
 	reducers: {
 		removeWave: removeWaveReducer,
 		updateWave: updateWaveReducer,
+		addWave: addWaveReducer,
 	},
 });
 
-export const { updateWave, removeWave } = wavesSlice.actions;
+export const { updateWave, removeWave, addWave } = wavesSlice.actions;

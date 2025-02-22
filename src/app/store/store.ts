@@ -16,7 +16,7 @@ export type RootState = ReturnType<typeof rootReducer>;
 export const store = configureStore({
 	reducer: rootReducer,
 	middleware: (getDefaultMiddleware) => {
-		return getDefaultMiddleware().concat(listenerMiddleware.middleware);
+		return getDefaultMiddleware().prepend(listenerMiddleware.middleware);
 	},
 });
 export type AppStore = typeof store;

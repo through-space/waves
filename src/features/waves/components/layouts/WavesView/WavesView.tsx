@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { WavesSettings } from "@features/waves/components/molecules/WavesSettings/WavesSettings";
 import { WaveSumChart } from "@features/waves/components/molecules/WaveSumChart/WaveSumChart";
 import {
 	WaveListWrapper,
@@ -7,6 +6,7 @@ import {
 	WaveViewTopPanel,
 } from "@features/waves/components/layouts/WavesView/WavesViewStyledComponents";
 import { WaveList } from "@features/waves/components/molecules/WaveList/WaveList";
+import { AddWaveButton } from "@features/waves/components/atoms";
 
 export const WavesView: FC = () => {
 	return (
@@ -18,7 +18,7 @@ export const WavesView: FC = () => {
 			<WaveListWrapper>
 				<WaveList />
 			</WaveListWrapper>
-			{/*<AddWaveButton addWave={addWave} />*/}
+			<AddWaveButton />
 		</WavesViewWrapper>
 	);
 };

@@ -13,20 +13,10 @@ import { selectWaveById } from "@features/waves/store/slices/wavesSlice/wavesSli
 export const WaveSettings: FC<IWaveSettingsProps> = ({ waveID }) => {
 	const dispatch = useAppDispatch();
 	const wave = useAppSelector((state) => selectWaveById(state, waveID));
+
 	// TODO: move ranges to components
-	const updateFrequency = (frequency: number) => {
-		updateWave({ frequency: frequency });
-	};
-
-	const updateAmplitude = (amplitude: number) => {
-		updateWave({ ...wave, amplitude: amplitude });
-	};
-
-	const updatePhase = (phase: number) => {
-		updateWave({ ...wave, phase: phase });
-	};
-
 	// TODO add min max frequency
+
 	return (
 		<WaveSettingsWrapper>
 			<FrequencyInput
@@ -41,7 +31,12 @@ export const WaveSettings: FC<IWaveSettingsProps> = ({ waveID }) => {
 					dispatch(updateWave({ id: waveID, amplitude }))
 				}
 			/>
-			<PhaseInput phase={wave.phase} updatePhase={updatePhase} />
+			<PhaseInput
+				phase={wave.phase}
+				updatePhase={(phase) =>
+					dispatch(updateWave({ id: waveID, phase }))
+				}
+			/>
 		</WaveSettingsWrapper>
 	);
 };
