@@ -9,7 +9,11 @@ import {
 } from "@features/waves/store/slices/wavesSlice/wavesSlice";
 import { IWave } from "@features/waves/types/wavesInterfaces";
 import { AppDispatch, RootState } from "@app/store/store";
-import { updateDataPoints } from "@features/waves/store/slices/dataPointsSlice/dataPointsSlice";
+import {
+	updateDataPoints,
+	updateSumWaveDataPoints,
+} from "@features/waves/store/slices/dataPointsSlice/dataPointsSlice";
+import { getSumWaveDataPoints } from "@features/waves/store/slices/wavesSlice/wavesSliceConsts";
 
 export const listenerMiddleware = createListenerMiddleware<RootState>();
 
@@ -23,7 +27,10 @@ startAppListening({
 
 	matcher: isAnyOf(updateWave, addWave),
 	effect: async (action: PayloadAction<IWave>, listenerApi) => {
-		listenerApi.cancelActiveListeners();
+		// TODO:
+		// listenerApi.cancelActiveListeners();
+		// await listenerApi.delay(10);
+
 		const updatedWaveID = action.payload.id;
 		const wavesState = listenerApi.getState().waves;
 		const updatedWave = wavesState.entities[updatedWaveID];
@@ -34,18 +41,14 @@ startAppListening({
 				samplingSettings: wavesState.settings.sampling,
 			}),
 		);
+
+		listenerApi.dispatch(
+			updateSumWaveDataPoints(
+				getSumWaveDataPoints(
+					Object.values(wavesState.entities),
+					wavesState.settings.sampling,
+				),
+			),
+		);
 	},
 });
-
-// startAppListening({
-// 	matcher: isAnyOf(addWave),
-// 	effect: async (action: PayloadAction<IWave>, listenerApi) => {
-// 		listenerApi.dispatch(
-// 			updateDataPoints({
-// 				wave: action.payload,
-// 				samplingSettings:
-// 					listenerApi.getState().waves.settings.sampling,
-// 			}),
-// 		);
-// 	},
-// });

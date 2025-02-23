@@ -1,5 +1,8 @@
 import { createAppSlice } from "@app/createAppSlice";
-import { updateDataPointsReducer } from "@features/waves/store/slices/dataPointsSlice/dataPointsSliceReducers";
+import {
+	updateDataPointsReducer,
+	updateSumWaveDataPointsReducer,
+} from "@features/waves/store/slices/dataPointsSlice/dataPointsSliceReducers";
 import { getInitialDataPoints } from "@features/waves/store/slices/dataPointsSlice/dataPointsSliceConsts";
 
 export const dataPointsSlice = createAppSlice({
@@ -7,6 +10,7 @@ export const dataPointsSlice = createAppSlice({
 	initialState: getInitialDataPoints(),
 	reducers: {
 		updateDataPoints: updateDataPointsReducer,
+		updateSumWaveDataPoints: updateSumWaveDataPointsReducer,
 		// addWave: addWaveReducer,
 		// removeWave: removeWaveReducer,
 		// updateWave: updateWaveReducer,
@@ -14,4 +18,5 @@ export const dataPointsSlice = createAppSlice({
 	},
 });
 
-export const { updateDataPoints } = dataPointsSlice.actions;
+export const { updateDataPoints, updateSumWaveDataPoints } =
+	dataPointsSlice.actions;

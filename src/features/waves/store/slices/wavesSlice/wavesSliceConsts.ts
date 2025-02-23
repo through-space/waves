@@ -4,6 +4,7 @@ import {
 } from "@features/waves/utils/calculations/basic";
 import {
 	IWave,
+	IWaveListSamplingSettings,
 	IWavesSettings,
 	IWavesState,
 	TWaveID,
@@ -33,25 +34,12 @@ export const INITIAL_WAVES_STATE: IWavesState = {
 		sampling: {
 			sampleRate: 5000,
 			maxDataPoints: 1000,
-			duration: 0.02,
+			duration: 0.4,
 		},
 	},
 };
 
 export const wavesAdapter = createEntityAdapter<IWave>();
-// items: [
-// 	{ ...DEFAULT_WAVE, id: "0", frequency: 440 },
-// 	{ ...DEFAULT_WAVE, id: "1", frequency: 110 },
-// ],
-// settings: {
-// 	sampling: {
-// 		sampleRate: 100,
-// 		maxDataPoints: 100,
-// 		duration: 0.02,
-// 	},
-// },
-// sumWave: {},
-// };
 
 // TODO: Add global type waveID to be string
 
@@ -63,41 +51,22 @@ export const isWaveExist = (waves: IWave[], waveId: string): boolean => {
 	return waves.some((wave) => wave.id === waveId);
 };
 
-export const getPopulatedWavesByID = (
-	wavesByID: Record<TWaveID, IWave>,
-	waveListSettings: IWavesSettings,
-): Record<TWaveID, IWave> => {
-	return Object.fromEntries(
-		Object.entries(wavesByID).map(([waveID, wave]) => {
-			return [
-				waveID,
-				{
-					...wave,
-					// dataPoints: getWaveDataPoints(wave, waveListSettings),
-				},
-			];
-		}),
-	);
-	// return waves.map((wave) => getWaveDataPoints(wave, waveListSettings));
-};
-
-export const getPopulatedSumWave = (
+export const getSumWaveDataPoints = (
 	waves: IWave[],
-	waveListSettings: IWavesSettings,
-): Partial<IWave> => {
+	samplingSettings: IWaveListSamplingSettings,
+): number[] => {
 	const summedWaves = waves.filter((wave) => wave.enabled);
 
 	// TODO: repetition here
-	const { sampleRate, duration, maxDataPoints } = waveListSettings.sampling;
+	const { sampleRate, duration, maxDataPoints } = samplingSettings;
 
 	const samplingProps = getSamplingProps(
 		EGetSamplingPropsMethod.BY_SAMPLING_RATE_AND_DURATION,
 		{ sampleRate, duration },
 	);
 
-	return {
-		dataPoints: getSumWaveSamplesByFunction(summedWaves, samplingProps),
-	};
+	return getSumWaveSamplesByFunction(summedWaves, samplingProps);
+	// return getSumWaveSamplesByFunction(summedWaves, samplingProps);
 };
 
 // export const getInitialWavesState = (

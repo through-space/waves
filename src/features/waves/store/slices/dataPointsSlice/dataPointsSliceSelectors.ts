@@ -3,3 +3,7 @@ import { dataPointsAdapter } from "@features/waves/store/slices/dataPointsSlice/
 
 export const { selectById: selectDataPointsById } =
 	dataPointsAdapter.getSelectors((state: RootState) => state.dataPoints);
+
+export const selectSumWave = (state: RootState) => {
+	return state.dataPoints.sumWave;
+};

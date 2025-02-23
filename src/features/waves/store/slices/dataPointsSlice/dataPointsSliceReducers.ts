@@ -2,15 +2,15 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import {
 	IWave,
 	IWaveListSamplingSettings,
-	IWavesSettings,
 } from "@features/waves/types/wavesInterfaces";
 import {
 	dataPointsAdapter,
 	getWaveDataPoints,
 } from "@features/waves/store/slices/dataPointsSlice/dataPointsSliceConsts";
+import { IDataPointsState } from "@features/waves/store/slices/dataPointsSlice/dataPointsSliceInterfaces";
 
 export const updateDataPointsReducer = (
-	state,
+	state: IDataPointsState,
 	action: PayloadAction<
 		{ wave: IWave; samplingSettings: IWaveListSamplingSettings },
 		string
@@ -24,4 +24,11 @@ export const updateDataPointsReducer = (
 	});
 
 	// 	// TODO: add error
+};
+
+export const updateSumWaveDataPointsReducer = (
+	state: IDataPointsState,
+	action: PayloadAction<number[], string>,
+) => {
+	return { ...state, sumWave: { dataPoints: action.payload } };
 };

@@ -1,17 +1,17 @@
-import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
-import { IDataPoints } from "@features/waves/store/slices/dataPointsSlice/dataPointsSliceInterfaces";
+import { createEntityAdapter } from "@reduxjs/toolkit";
+import { IDataPointsEntity } from "@features/waves/store/slices/dataPointsSlice/dataPointsSliceInterfaces";
 import { getWaveSamples } from "@features/waves/utils/calculations/basic";
 import {
 	IWave,
 	IWaveListSamplingSettings,
-	IWavesSettings,
 } from "@features/waves/types/wavesInterfaces";
 import { getSamplingProps } from "@features/waves/utils/calculations";
 import { EGetSamplingPropsMethod } from "@features/waves/utils/calculations/getDataPointMethods";
 import { wavesSlice } from "@features/waves/store/slices/wavesSlice/wavesSlice";
+import { getSumWaveDataPoints } from "@features/waves/store/slices/wavesSlice/wavesSliceConsts";
 
 export const dataPointsAdapter = createEntityAdapter({
-	selectId: (dataPoints: IDataPoints) => dataPoints.waveID,
+	selectId: (dataPointsEntity: IDataPointsEntity) => dataPointsEntity.waveID,
 });
 
 export const getInitialDataPoints = () => {
@@ -21,16 +21,24 @@ export const getInitialDataPoints = () => {
 	//TODO: check when no waves exist
 	console.log("getInitialDataPoints()");
 
-	const initialDataPoints = Object.values(wavesSliceState.entities).map(
-		(wave) => {
-			return {
-				waveID: wave.id,
-				dataPoints: getWaveDataPoints(wave, samplingSettings),
-			};
-		},
-	);
+	//TODO: filter by enabled waves and not muted
+	const allWaves: IWave[] = Object.values(wavesSliceState.entities);
 
-	return dataPointsAdapter.getInitialState(undefined, initialDataPoints);
+	const initialDataPoints = allWaves.map((wave) => {
+		return {
+			waveID: wave.id,
+			dataPoints: getWaveDataPoints(wave, samplingSettings),
+		};
+	});
+
+	return dataPointsAdapter.getInitialState(
+		{
+			sumWave: {
+				dataPoints: getSumWaveDataPoints(allWaves, samplingSettings),
+			},
+		},
+		initialDataPoints,
+	);
 };
 
 //TODO: move to dataPointsSlice

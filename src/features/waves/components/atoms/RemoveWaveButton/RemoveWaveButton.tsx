@@ -1,7 +1,5 @@
 import { IRemoveWaveButtonProps } from "@features/waves/components/atoms/RemoveWaveButton/RemoveWaveButtonInterfaces";
 import React, { FC } from "react";
-import { DelayedEnableWrapper } from "@components/atoms/DelayedEnableWrapper/DelayedEnableWrapper";
-import { removeButtonDelay } from "@features/waves/components/atoms/RemoveWaveButton/RemoveWaveButtonConsts";
 import { useAppDispatch } from "@app/hooks";
 import { removeWave } from "@features/waves/store/slices/wavesSlice/wavesSlice";
 
