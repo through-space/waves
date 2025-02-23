@@ -1,11 +1,7 @@
-import {
-	getSumWaveSamplesByFunction,
-	getWaveSamples,
-} from "@features/waves/utils/calculations/basic";
+import { getSumWaveSamplesByFunction } from "@features/waves/utils/calculations/basic";
 import {
 	IWave,
 	IWaveListSamplingSettings,
-	IWavesSettings,
 	IWavesState,
 	TWaveID,
 } from "@features/waves/types/wavesInterfaces";

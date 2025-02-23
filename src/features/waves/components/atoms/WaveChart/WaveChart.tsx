@@ -5,7 +5,7 @@ import {
 	selectWaveDataPoints,
 } from "@features/waves/components/atoms/WaveChart/WaveChartConsts";
 import { useAppSelector } from "@app/hooks";
-import { SimpleChart } from "@components/atoms/SimpleChart/SimpleChart";
+import { SimpleHighChart } from "@components/atoms/SimpleChart/SimpleHighChart";
 
 export const WaveChart: FC<IWaveChartProps> = (props) => {
 	const { waveID } = props;
@@ -22,5 +22,5 @@ export const WaveChart: FC<IWaveChartProps> = (props) => {
 
 	const maxDataLength = Math.min(dataPoints.length, MAX_HIGHCHARTS_POINTS);
 
-	return <SimpleChart data={dataPoints.slice(0, maxDataLength)} />;
+	return <SimpleHighChart data={dataPoints.slice(0, maxDataLength)} />;
 };

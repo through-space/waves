@@ -1,3 +1,3 @@
-export interface ISimpleChartProps {
+export interface ISimpleHighChartProps {
 	data: number[];
 }

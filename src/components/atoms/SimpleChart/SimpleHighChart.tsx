@@ -1,14 +1,19 @@
 import React, { FC } from "react";
-import { ISimpleChartProps } from "@components/atoms/SimpleChart/SimpleChartInterfaces";
+import { ISimpleHighChartProps } from "@components/atoms/SimpleChart/SimpleChartInterfaces";
 import Highcharts from "highcharts";
 import { HighchartsReact } from "highcharts-react-official";
 import DarcUnica from "highcharts/themes/dark-unica";
 
-export const SimpleChart: FC<ISimpleChartProps> = ({ data }) => {
+export const SimpleHighChart: FC<ISimpleHighChartProps> = ({ data }) => {
 	if (!data) {
 		return null;
 	}
+
+	/**
+	 * TODO:
+	 */
 	const theme = DarcUnica;
+
 	const chartOptions: Highcharts.Options = {
 		series: [
 			{
